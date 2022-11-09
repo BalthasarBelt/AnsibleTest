@@ -1,0 +1,11 @@
+---
+- name: Configure nginx web server
+  hosts: ansibletest
+  tasks:
+  - name: install nginx server
+    yum:
+      name: nginx
+      state: latest
+  - service:
+      name: nginx
+      state: started
