@@ -2,10 +2,11 @@
 - name: Configure nginx web server
   hosts: ansibletest
   tasks:
-  - name: update yum cache
-    yum:
-        update_cache: yes
-        upgrade: yes
+  - name: add the /etc/yum.repos.d/epel.repo
+    yum_repository:
+      name: epel
+      description: EPEL repo
+      baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
   - name: install nginx server
     yum:
       name: nginx
