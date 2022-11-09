@@ -2,10 +2,11 @@
 - name: Configure nginx web server
   hosts: ansibletest
   tasks:
-  - name: install nginx server
+  - name: update yum cache
     yum:
         update_cache: yes
         upgrade: yes
+  - name: install nginx server
     yum:
       name: nginx
       state: latest
