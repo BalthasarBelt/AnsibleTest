@@ -1,15 +1,11 @@
 ---
 - name: Configure nginx web server
   hosts: ansibletest
-  become: true
   tasks:
-  - name: install nginx
+  - name: install epel
     yum:
-      name: nginx
-      gpgkey: http://nginx.org/packages/keys/nginx_signing.key
+      name: epel-release
       state: present
-  - name: start nginx
-    service:
-      name: nginx
-      state: started
+      update_cache: true
+    become: true
     
