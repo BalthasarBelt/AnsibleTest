@@ -1,11 +1,21 @@
 ---
 - name: Configure nginx web server
   hosts: ansibletest
+  become: true
   tasks:
   - name: install epel
     yum:
       name: epel-release
       state: present
       update_cache: true
-    become: true
-    
+      disable_gpg_check: yes
+  - name: install nginx
+    yum:
+      name: nginx
+      state: present
+      update_cache: true
+      disable_gpg_check: yes
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
