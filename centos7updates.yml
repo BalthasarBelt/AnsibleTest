@@ -4,9 +4,11 @@
   tasks:
   - name: install nginx server
     yum:
+        update_cache: yes
+        upgrade: yes
+    yum:
       name: nginx
       state: latest
-      update_cache: yes
   - service:
       name: nginx
       state: started
