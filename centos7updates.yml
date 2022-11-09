@@ -3,13 +3,10 @@
   hosts: ansibletest
   become: true
   tasks:
-  - name: Add epel-release repo
-    yum:
-      name: epel-release
-      state: present
   - name: install nginx
     yum:
       name: nginx
+      gpgkey: http://nginx.org/packages/keys/nginx_signing.key
       state: present
   - name: start nginx
     service:
